@@ -3,11 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#2E9DF7">
+    <title>PURIFY! | Clean Water Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+    <main class="game-shell">
+        <header class="page-heading">
+            <img class="brand-logo" src="img/cw_logo_horizontal.png" alt="charity: water">
+            <p class="eyebrow">A clean water challenge</p>
+            <h1>PURIFY<span>!</span></h1>
+            <p class="tagline">Keep dirty water out of the tank.</p>
+        </header>
+
+        <section class="hud" aria-label="Game stats">
+            <div class="hud-item">
+                <span class="hud-label">Score</span>
+                <span class="hud-value" id="score">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Time remaining</span>
+                <span class="hud-value"><span id="time">30</span><span class="unit"> sec</span></span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Contamination</span>
+                <span class="hud-value"><span id="multiplier">1</span><span class="unit">x</span></span>
+            </div>
+        </section>
+
+        <section class="game-area" id="game-area" aria-label="Game area">
+            <div class="sky-label" aria-hidden="true">CATCH THE DIRTY DROPS</div>
+            <div class="water-tank" id="water-tank" aria-label="Clean water tank">
+                <span class="tank-water"></span>
+                <img class="tank-logo" src="img/cw_logo.png" alt="" aria-hidden="true">
+                <span class="tank-label">CLEAN WATER</span>
+            </div>
+            <div class="game-message" id="game-message" role="status" aria-live="polite">
+                <h2 id="message-title">Ready to purify?</h2>
+                <p id="message-text">Catch dirty and red drops. Keep all dirty drops out of the tank for a 50-point bonus. Red drops add 3x more time when they reach the tank.</p>
+            </div>
+        </section>
+
+        <div class="game-controls">
+            <button class="button button-primary" id="start-button" type="button">Start game</button>
+            <button class="button button-secondary" id="restart-button" type="button" hidden>Play again</button>
+            <p class="control-hint">Catch dirty and red drops for points, and keep them out of the tank for a 50-point bonus. Clean drops are less common; red drops add 3x the contamination time. At 7 seconds, more and faster drops appear.</p>
+        </div>
+        <footer>Clean water changes everything. <span>charity: water</span></footer>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

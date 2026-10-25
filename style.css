@@ -1,0 +1,375 @@
+/* Charity: water colors */
+:root {
+    --yellow: #FFC907;
+    --blue: #2E9DF7;
+    --light-blue: #8BD1CB;
+    --ink: #17324D;
+    --muted: #587084;
+    --white: #FFFFFF;
+    --dirty: #70482C;
+    --red: #D64045;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    padding: clamp(14px, 3vh, 30px) clamp(12px, 3vw, 32px);
+    color: var(--ink);
+    background-color: #F3FAFC;
+    background-image: radial-gradient(#B9E1EE 1px, transparent 1px);
+    background-size: 22px 22px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+.game-shell {
+    width: min(100%, 960px);
+    margin: 0 auto;
+}
+
+.page-heading {
+    margin-bottom: clamp(12px, 2.5vh, 22px);
+    text-align: center;
+}
+
+.brand-logo {
+    display: block;
+    width: clamp(150px, 34vw, 210px);
+    height: auto;
+    margin: 0 auto 12px;
+}
+
+.eyebrow {
+    margin: 0 0 3px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.7rem, 9vw, 4.2rem);
+    line-height: 1;
+}
+
+h1 span {
+    color: #D99C00;
+}
+
+.tagline {
+    margin: 8px 0 0;
+    color: var(--muted);
+}
+
+.hud {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: var(--white);
+}
+
+.hud-item {
+    min-width: 0;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.hud-item + .hud-item {
+    border-left: 1px solid #D5E6EC;
+}
+
+.hud-label,
+.hud-value {
+    display: block;
+}
+
+.hud-label {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hud-value {
+    margin-top: 3px;
+    font-size: 1.45rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.unit {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.game-area {
+    position: relative;
+    height: clamp(240px, 54vh, 560px);
+    height: clamp(240px, 54dvh, 560px);
+    overflow: hidden;
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #DDF5FF 0%, #F5FCFF 74%, #D4F1F6 100%);
+    isolation: isolate;
+}
+
+.sky-label {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    color: #6D9CB2;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.water-tank {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 19%;
+    min-height: 58px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top: 4px solid #1683C6;
+    background: #C8F0FA;
+}
+
+.tank-water {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background: repeating-linear-gradient(160deg, transparent 0 16px, rgb(46 157 247 / 10%) 16px 19px);
+}
+
+.tank-label {
+    z-index: 1;
+    color: #126E9F;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.tank-logo {
+    position: absolute;
+    right: clamp(12px, 3vw, 28px);
+    bottom: 50%;
+    width: clamp(32px, 5vw, 44px);
+    height: clamp(32px, 5vw, 44px);
+    object-fit: contain;
+    opacity: 0.8;
+    transform: translateY(50%);
+}
+
+.drop {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 27px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 55% 55% 55% 10%;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: inset -4px -4px 0 rgb(0 0 0 / 12%), 0 2px 4px rgb(23 50 77 / 18%);
+}
+
+.drop-dirty {
+    background: var(--dirty);
+}
+
+.drop-red {
+    background: var(--red);
+}
+
+.drop-clean {
+    background: var(--blue);
+}
+
+.drop:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
+}
+
+.game-message {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    width: min(88%, 370px);
+    padding: 19px 22px;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: var(--white);
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.game-message[hidden] {
+    display: none;
+}
+
+.game-message h2 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+}
+
+.game-message p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.game-controls {
+    display: flex;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 13px 0 4px;
+}
+
+.button {
+    min-height: 44px;
+    padding: 0 22px;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: var(--yellow);
+}
+
+.button-secondary {
+    color: var(--ink);
+    background: var(--white);
+}
+
+.button:hover {
+    filter: brightness(0.96);
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+}
+
+.button[hidden] {
+    display: none;
+}
+
+.control-hint {
+    max-width: 520px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+footer {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+footer span {
+    color: var(--ink);
+    font-weight: 800;
+}
+
+@media (max-width: 480px) {
+    .hud-item {
+        padding: 9px 5px;
+    }
+
+    .hud-label {
+        font-size: 0.65rem;
+    }
+
+    .hud-value {
+        font-size: 1.25rem;
+    }
+
+    .game-controls {
+        gap: 10px;
+    }
+
+    .control-hint {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .brand-logo {
+        width: 130px;
+        margin-bottom: 6px;
+    }
+
+    .page-heading {
+        margin-bottom: 8px;
+    }
+
+    .eyebrow {
+        font-size: 0.65rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .tagline {
+        margin-top: 4px;
+    }
+
+    .game-area {
+        height: 42vh;
+        height: 42dvh;
+        min-height: 170px;
+    }
+
+    .game-message {
+        padding: 12px 16px;
+    }
+
+    .game-message p {
+        font-size: 0.9rem;
+    }
+
+    .game-controls {
+        padding-top: 8px;
+    }
+
+    footer {
+        margin-top: 6px;
+    }
+}
